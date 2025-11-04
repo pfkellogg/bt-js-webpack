@@ -1,6 +1,7 @@
 const rules = require('nodemon/lib/rules')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'development',
@@ -23,7 +24,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.js$/,
@@ -42,6 +43,7 @@ module.exports = {
       title: 'Webpack App',
       filename: 'index.html',
       template: './src/index.html'
-    })
+    }),
+    new MiniCssExtractPlugin()
   ]
 }
