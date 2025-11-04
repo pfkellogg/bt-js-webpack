@@ -1,3 +1,4 @@
+const rules = require('nodemon/lib/rules')
 const path = require('path')
 
 module.exports = {
@@ -6,5 +7,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   }
 }
